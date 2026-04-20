@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talent Corp Check IA — Avilés</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1F3B;
+    --navy-mid: #162E54;
+    --coral: #FF6B4A;
+    --coral-light: rgba(255,107,74,0.12);
+    --white: #FFFFFF;
+    --gray: #64748B;
+    --light: #F5F7FA;
+    --border: #E2E8F0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ─────────────────────────── */
+  header {
+    background: var(--navy);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--white);
+    letter-spacing: 0.08em;
+  }
+
+  .logo span { color: var(--coral); }
+
+  .header-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ───────────────────────────── */
+  .hero {
+    background: var(--navy);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -120px;
+    top: -120px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255,107,74,0.06);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    left: -80px;
+    bottom: -80px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(22,46,84,0.8);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--coral);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    border-left: 2px solid var(--coral);
+    padding-left: 1rem;
+  }
+
+  .stat-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.25rem;
+  }
+
+  /* ── QUÉ RECIBIRÁS ──────────────────── */
+  .section {
+    padding: 4rem 2rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 0.75rem;
+  }
+
+  .section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 2rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 3px solid var(--coral);
+    transition: transform 0.2s;
+  }
+
+  .card:hover { transform: translateY(-2px); }
+
+  .card-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--coral);
+    margin-bottom: 0.5rem;
+  }
+
+  .card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .card p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+
+  /* ── PASOS ──────────────────────────── */
+  .steps-bg {
+    background: var(--navy);
+    padding: 4rem 2rem;
+  }
+
+  .steps-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .steps-inner .section-label { color: var(--coral); }
+
+  .steps-inner h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 2rem;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .step-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--coral);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-content h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+
+  .step-content p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.55;
+  }
+
+  .step-time {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--coral);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.2rem;
+    display: block;
+  }
+
+  /* ── FORMULARIO ─────────────────────── */
+  .form-section {
+    padding: 4rem 2rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .form-wrapper {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(11,31,59,0.08);
+  }
+
+  .form-header {
+    background: var(--navy);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .form-header-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--coral);
+  }
+
+  .form-header-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .form-header-sub {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.1rem;
+  }
+
+  iframe {
+    width: 100%;
+    border: none;
+    display: block;
+    min-height: 900px;
+    background: var(--white);
+  }
+
+  /* ── FOOTER ─────────────────────────── */
+  footer {
+    background: var(--navy);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.35rem;
+  }
+
+  .footer-logo span { color: var(--coral); }
+
+  .footer-sub {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── RESPONSIVE ─────────────────────── */
+  @media (max-width: 600px) {
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .hero-stats { gap: 1.5rem; }
+    .section { padding: 3rem 1.25rem; }
+    .steps-bg { padding: 3rem 1.25rem; }
+    .form-section { padding: 3rem 1.25rem; }
+    .form-header { padding: 1.25rem; }
+    iframe { min-height: 1100px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">AVILÉS <span>·</span> Shaping the Future of Talent</div>
+  <div class="header-tag">Talent Corp Check IA</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-label">Diagnóstico corporativo · IA</span>
+    <h1>¿Tu equipo está listo<br>para la <em>inteligencia artificial</em>?</h1>
+    <p class="hero-sub">Completa este diagnóstico en menos de 15 minutos. Recibirás un informe personalizado con tu nivel de adopción de IA, las brechas identificadas y 3 acciones concretas para empezar hoy.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">15 min</div>
+        <div class="stat-label">duración del diagnóstico</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">48–72 h</div>
+        <div class="stat-label">para recibir tu informe</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">confidencial</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ RECIBIRÁS -->
+<section class="section">
+  <div class="section-label">Lo que obtienes</div>
+  <h2>Tu informe incluye cuatro puntos concretos</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-num">01</div>
+      <h3>Nivel de adopción IA</h3>
+      <p>Dónde estás hoy en relación al uso real de inteligencia artificial en tu trabajo.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">02</div>
+      <h3>Perfil de actitud</h3>
+      <p>Cómo tu mentalidad frente a la tecnología está impactando tu desempeño y potencial.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">03</div>
+      <h3>Brechas identificadas</h3>
+      <p>Las barreras específicas que te impiden usar IA como una ventaja competitiva real.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">04</div>
+      <h3>Plan de acción</h3>
+      <p>3 pasos concretos, aplicables esta semana, para empezar a cerrar esas brechas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PASOS -->
+<section class="steps-bg">
+  <div class="steps-inner">
+    <div class="section-label">Cómo funciona</div>
+    <h2>Tres pasos. Sin complicaciones.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle">1</div>
+        <div class="step-content">
+          <span class="step-time">15 minutos</span>
+          <h4>Completa el formulario</h4>
+          <p>Responde las preguntas sobre tu uso actual de IA, tu actitud frente a la tecnología y las barreras que has encontrado. Sin respuestas correctas ni incorrectas.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <div class="step-content">
+          <span class="step-time">48–72 horas</span>
+          <h4>Recibe tu informe personalizado</h4>
+          <p>Fernando Avilés analiza tu diagnóstico y prepara un informe PDF con tu perfil, brechas priorizadas y plan de acción específico para tu cargo y sector.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <div class="step-content">
+          <span class="step-time">Opcional</span>
+          <h4>Agenda una sesión de seguimiento</h4>
+          <p>Si quieres profundizar en los resultados o explorar un plan de mejora con acompañamiento, puedes agendar una sesión directamente con Fernando.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section class="form-section">
+  <div class="section-label">El diagnóstico</div>
+  <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;margin-bottom:1.5rem;">Completa tu Talent Corp Check IA</h2>
+  <div class="form-wrapper">
+    <div class="form-header">
+      <div class="form-header-dot"></div>
+      <div>
+        <div class="form-header-text">Talent Corp Check IA · Avilés</div>
+        <div class="form-header-sub">Información confidencial · Solo uso interno</div>
+      </div>
+    </div>
+    <!-- ↓ REEMPLAZA ESTA URL CON TU LINK DE GOOGLE FORMS -->
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLScuezkHy3EkFTxILkckz561qut8tOzf6avocXPcNIQRyLGRDQ/viewform?embedded=true"
+      title="Talent Corp Check IA">
+      Cargando formulario...
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">AVILÉS <span>·</span> Shaping the Future of Talent</div>
+  <div class="footer-sub">talent-check-asft.netlify.app · Información confidencial · © 2026</div>
+</footer>
+
+</body>
+</html>
