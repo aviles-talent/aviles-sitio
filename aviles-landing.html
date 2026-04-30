@@ -1,177 +1,345 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avilés · Diagnóstico de Empleabilidad Gratuito</title>
-<meta name="description" content="Descubre en 5 minutos qué tan preparado estás para el mercado laboral de 2026. Diagnóstico gratuito de empleabilidad + IA. Informe PDF automático + sesión de 30 min incluida.">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#0B1F3B;--coral:#FF6B4A;--white:#FFFFFF;--gray:#E5E7EB;--muted:rgba(255,255,255,0.55)}
-body{font-family:'Open Sans',sans-serif;background:#F8F8F6;color:#1a1a1a;overflow-x:hidden}
+ script v2 · JS
+Copy
 
-nav{background:var(--white);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:1px solid var(--gray);position:sticky;top:0;z-index:100}
-.nav-logo{font-family:'Montserrat',sans-serif;font-weight:800;font-size:16px;color:var(--navy);letter-spacing:0.08em}
-.nav-logo span{color:var(--coral)}
-.nav-cta{background:var(--coral);color:var(--white);font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:10px 20px;border-radius:4px;text-decoration:none}
-
-.hero{background:var(--navy);padding:80px 6% 72px;text-align:center}
-.badge{display:inline-block;background:rgba(255,107,74,0.15);border:1px solid rgba(255,107,74,0.35);color:var(--coral);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:28px}
-.hero h1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(30px,5vw,54px);color:var(--white);line-height:1.1;margin-bottom:20px}
-.hero h1 span{color:var(--coral)}
-.hero-sub{font-size:16px;color:var(--muted);line-height:1.75;max-width:540px;margin:0 auto 44px}
-.cta-btn{display:inline-block;background:var(--coral);color:var(--white);font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.04em;padding:18px 42px;border-radius:4px;text-decoration:none;margin-bottom:16px}
-.cta-hint{font-size:12px;color:var(--muted)}
-.cta-hint span{color:rgba(255,255,255,0.8)}
-
-.stats{display:flex;justify-content:center;gap:0;margin-top:56px;border-top:1px solid rgba(255,255,255,0.08);padding-top:40px;flex-wrap:wrap}
-.stat{padding:0 36px;text-align:center;border-right:1px solid rgba(255,255,255,0.1)}
-.stat:last-child{border-right:none}
-.stat-n{font-family:'Montserrat',sans-serif;font-weight:800;font-size:28px;color:var(--coral)}
-.stat-l{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:0.03em}
-
-.section{padding:72px 6%}
-.section-inner{max-width:760px;margin:0 auto}
-.section-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--coral);margin-bottom:10px}
-.section-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(22px,3.5vw,32px);color:var(--navy);line-height:1.25;margin-bottom:14px}
-.section-sub{font-size:15px;color:#6b7280;line-height:1.75;margin-bottom:40px}
-
-.problems{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
-.prob{background:var(--white);border:1px solid var(--gray);border-radius:10px;padding:24px 20px;border-top:3px solid var(--coral)}
-.prob h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:8px}
-.prob p{font-size:13px;color:#6b7280;line-height:1.6}
-
-.quote-bar{background:var(--navy);padding:52px 6%;text-align:center}
-.quote-bar blockquote{font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(17px,2.5vw,24px);color:var(--white);line-height:1.5;max-width:640px;margin:0 auto 12px}
-.quote-bar blockquote em{color:var(--coral);font-style:normal}
-.quote-by{font-size:12px;color:var(--muted)}
-
-.how{display:flex;flex-direction:column;gap:0}
-.how-step{display:flex;gap:24px;align-items:flex-start;padding:28px 0;border-bottom:1px solid var(--gray)}
-.how-step:last-child{border-bottom:none}
-.how-num{width:40px;height:40px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;color:var(--white);flex-shrink:0;margin-top:2px}
-.how-content h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px}
-.how-content p{font-size:13px;color:#6b7280;line-height:1.6}
-.how-tag{display:inline-block;background:#FFF1EE;color:var(--coral);font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;margin-left:8px;vertical-align:middle}
-
-.cta-final{background:var(--coral);padding:72px 6%;text-align:center}
-.cta-final h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(24px,4vw,38px);color:var(--white);margin-bottom:14px;line-height:1.2}
-.cta-final p{font-size:15px;color:rgba(255,255,255,0.88);max-width:420px;margin:0 auto 36px;line-height:1.7}
-.btn-white{display:inline-block;background:var(--white);color:var(--coral);font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;letter-spacing:0.04em;padding:16px 36px;border-radius:4px;text-decoration:none}
-.cta-final .hint{font-size:12px;color:rgba(255,255,255,0.7);margin-top:14px}
-
-footer{background:var(--navy);padding:28px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.ft{font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;color:var(--white);letter-spacing:0.06em}
-.ft-links{display:flex;gap:20px}
-.ft-links a{font-size:11px;color:var(--muted);text-decoration:none}
-
-@media(max-width:640px){
-  nav{padding:0 4%}
-  .hero{padding:56px 4% 48px}
-  .stats{gap:20px}
-  .stat{border-right:none;padding:12px 20px}
-  .section{padding:52px 4%}
-  .quote-bar{padding:44px 4%}
-  .cta-final{padding:52px 4%}
-  footer{flex-direction:column;align-items:flex-start;padding:24px 4%}
-  .how-step{gap:16px}
+// ============================================================
+// TALENT CHECK ASFT — Automatización de Diagnóstico MINTA v2
+// Avilés | Construyendo el Futuro del Talento
+// ============================================================
+// CAMBIOS v2:
+// · Score expresado sobre 13 con nivel interpretativo claro
+// · Perfil incluye Ventaja principal + Brecha principal + Impacto
+// · Barras MINTA destacan la mayor brecha con color coral
+// · CTA cambiado a sesión estratégica con cal.com/aviles
+// · Recomendación de tier personalizada según score al cierre
+// ============================================================
+ 
+function onFormSubmit(e) {
+  var responses = e.values;
+  var email        = responses[1];
+  var usa_ia       = responses[3];
+  var seguridad    = responses[4];
+  var linkedin     = responses[5];
+  var rezago       = responses[6];
+  var freno        = responses[7];
+  var emailDestino = responses[8];
+ 
+  var destinatario = (emailDestino && emailDestino.trim() !== "") ? emailDestino : email;
+  var nombreRaw = destinatario.split("@")[0];
+  var nombre = nombreRaw.charAt(0).toUpperCase() + nombreRaw.slice(1);
+ 
+  var puntos = calcularPuntos(usa_ia, seguridad, linkedin, rezago, freno);
+  var total = puntos.M + puntos.I + puntos.N + puntos.T + puntos.A;
+  // Máximo real: M(3) + I(3) + N(3) + T(2) + A(2) = 13
+ 
+  var perfilData = determinarPerfil(total, puntos);
+  var recs = generarRecomendaciones(puntos);
+  var subject = "Tu diagnóstico MINTA está listo — Perfil: " + perfilData.nombre;
+  var htmlBody = construirEmail(nombre, puntos, total, perfilData, recs);
+ 
+  GmailApp.sendEmail(destinatario, subject, "", {
+    htmlBody: htmlBody,
+    name: "Fernando Avilés | Avilés",
+    replyTo: "fer@avilesfutureoftalent.com"
+  });
 }
-</style>
-</head>
-<body>
-
-<nav>
-  <span class="nav-logo">AVILÉ<span>S</span></span>
-  <a class="nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeTVORX494fc2kWjWHejN6ZSwBcms_5hG02ATwcRa5K8pj_7g/viewform?usp=header" target="_blank">Hacer el diagnóstico →</a>
-</nav>
-
-<section class="hero">
-  <div class="badge">Diagnóstico gratuito · 5 minutos</div>
-  <h1>¿La IA está reemplazando <span>tu valor</span> profesional?</h1>
-  <p class="hero-sub">Descubre exactamente dónde estás parado en el mercado laboral de 2026 — y qué hacer al respecto.</p>
-  <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeTVORX494fc2kWjWHejN6ZSwBcms_5hG02ATwcRa5K8pj_7g/viewform?usp=header" target="_blank">Hacer mi diagnóstico gratis</a>
-  <div class="cta-hint">Sin costo · Informe PDF automático · <span>Sesión de 30 min incluida</span></div>
-  <div class="stats">
-    <div class="stat"><div class="stat-n">+25</div><div class="stat-l">años guiando talento</div></div>
-    <div class="stat"><div class="stat-n">10K+</div><div class="stat-l">historias analizadas</div></div>
-    <div class="stat"><div class="stat-n">5 min</div><div class="stat-l">para completarlo</div></div>
-    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">gratuito</div></div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-inner">
-    <div class="section-label">El problema real</div>
-    <h2 class="section-title">¿Por qué muchos profesionales con experiencia se quedan atrás?</h2>
-    <p class="section-sub">No es falta de capacidad. Es no saber qué cambiar ni cómo comunicarlo en el mercado de hoy.</p>
-    <div class="problems">
-      <div class="prob">
-        <h4>Mentalidad desactualizada</h4>
-        <p>Las reglas de 2015 ya no aplican en 2026. El mercado cambió y la mayoría no lo sabe todavía.</p>
-      </div>
-      <div class="prob">
-        <h4>Brecha de IA invisible</h4>
-        <p>No saber qué herramientas de IA usar en tu rol te deja fuera de consideración antes de la entrevista.</p>
-      </div>
-      <div class="prob">
-        <h4>Talento no comunicado</h4>
-        <p>El mercado no premia lo que tienes. Premia lo que logras comunicar — y eso es una habilidad.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="quote-bar">
-  <blockquote>"La experiencia sin IA es como tener el mejor mapa del mundo… <em>en papel.</em>"</blockquote>
-  <p class="quote-by">Fernando Avilés · Fundador de Avilés · +10,000 entrevistas conducidas</p>
-</div>
-
-<section class="section" style="background:var(--white)">
-  <div class="section-inner">
-    <div class="section-label">Cómo funciona</div>
-    <h2 class="section-title">Simple. Rápido. Gratis.</h2>
-    <div class="how">
-      <div class="how-step">
-        <div class="how-num">1</div>
-        <div class="how-content">
-          <h4>Completa el formulario <span class="how-tag">5 minutos</span></h4>
-          <p>8 preguntas sobre tu perfil, tu uso actual de IA y tu situación laboral.</p>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-num">2</div>
-        <div class="how-content">
-          <h4>Recibe tu informe PDF <span class="how-tag">Automático</span></h4>
-          <p>Análisis personalizado directo a tu correo. Tu score de empleabilidad y tus brechas clave.</p>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-num">3</div>
-        <div class="how-content">
-          <h4>Sesión de revisión de 30 minutos <span class="how-tag">Incluida</span></h4>
-          <p>Revisamos juntos los resultados. Sin venta, sin presión — solo claridad sobre tu siguiente paso.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-final">
-  <h2>El primer paso es gratis.<br>Sin excusas.</h2>
-  <p>En 5 minutos sabes exactamente dónde estás parado en el mercado laboral de 2026.</p>
-  <a class="btn-white" href="https://docs.google.com/forms/d/e/1FAIpQLSeTVORX494fc2kWjWHejN6ZSwBcms_5hG02ATwcRa5K8pj_7g/viewform?usp=header" target="_blank">Hacer mi diagnóstico gratis →</a>
-  <div class="hint">Recibes tu informe PDF de forma automática · Sesión de 30 min incluida</div>
-</section>
-
-<footer>
-  <span class="ft">AVILÉS · Construyendo el Futuro del Talento</span>
-  <div class="ft-links">
-    <a href="https://talent-check-asft.netlify.app/corporativo" target="_blank">Empresas</a>
-    <a href="https://www.tiktok.com/@aviles.talent" target="_blank">@aviles.talent</a>
-    <a href="mailto:fer@avilesfutureoftalent.com">Contacto</a>
-  </div>
-</footer>
-
-</body>
-</html>
+ 
+// ============================================================
+// CÁLCULO DE PUNTOS — sin cambios en la lógica base
+// ============================================================
+function calcularPuntos(usa_ia, seguridad, linkedin, rezago, freno) {
+  var puntos = { M: 0, I: 0, N: 0, T: 0, A: 0 };
+ 
+  if (seguridad.indexOf("Muy seguro") >= 0)       puntos.M = 3;
+  else if (seguridad.indexOf("Algo seguro") >= 0) puntos.M = 2;
+  else                                             puntos.M = 1;
+ 
+  if (usa_ia.indexOf("regularmente") >= 0)         puntos.I = 3;
+  else if (usa_ia.indexOf("probado") >= 0)         puntos.I = 2;
+  else                                             puntos.I = 1;
+ 
+  if (linkedin.indexOf("Este") >= 0)               puntos.N = 3;
+  else if (linkedin.indexOf("1 a 2") >= 0)        puntos.N = 2;
+  else                                             puntos.N = 1;
+ 
+  var rezagoL = rezago.toLowerCase();
+  if (rezagoL.indexOf("ia") >= 0 || rezagoL.indexOf("tecnolog") >= 0) puntos.T = 1;
+  else puntos.T = 2;
+ 
+  var frenoL = freno.toLowerCase();
+  if (frenoL.indexOf("edad") >= 0 || frenoL.indexOf("cambios") >= 0 || frenoL.indexOf("miedo") >= 0)
+    puntos.A = 1;
+  else
+    puntos.A = 2;
+ 
+  return puntos;
+}
+ 
+// ============================================================
+// PERFIL — ahora incluye nivel, ventaja, brecha e impacto
+// ============================================================
+function determinarPerfil(total, puntos) {
+ 
+  // Identificar dimensión más alta y más baja
+  var maxDim = "M", minDim = "M";
+  var maxVal = puntos.M, minVal = puntos.M;
+  var maxPct = { M: 3, I: 3, N: 3, T: 2, A: 2 }; // máximos reales por dim
+ 
+  var dims = ["M","I","N","T","A"];
+  var labels = { M:"Mindset", I:"Inteligencia Artificial", N:"Networking", T:"Transformación", A:"Adaptabilidad" };
+ 
+  // Calcular puntaje relativo (% del máximo posible por dimensión)
+  var relativo = {};
+  dims.forEach(function(d) {
+    relativo[d] = puntos[d] / maxPct[d];
+  });
+ 
+  dims.forEach(function(d) {
+    if (relativo[d] > relativo[maxDim]) { maxDim = d; maxVal = puntos[d]; }
+    if (relativo[d] < relativo[minDim]) { minDim = d; minVal = puntos[d]; }
+  });
+ 
+  var ventajaNombre = labels[maxDim];
+  var brechaNombre  = labels[minDim];
+ 
+  // Textos de ventaja por dimensión
+  var ventajaTextos = {
+    M: "Tu mentalidad es tu activo más sólido. La certeza con la que enfrentas los cambios es escasa en el mercado.",
+    I: "Ya usas IA en tu trabajo. Eso te separa del 70% de profesionales de tu generación.",
+    N: "Tu red está activa. LinkedIn actualizado y conexiones recientes son señales que los reclutadores valoran.",
+    T: "Estás identificando y actuando sobre tus brechas. Esa capacidad de lectura del mercado es un diferenciador.",
+    A: "Tu apertura al cambio es genuina. En un mercado volátil, eso vale más que la experiencia técnica."
+  };
+ 
+  // Textos de brecha por dimensión
+  var brechaTextos = {
+    M: "Tu mayor freno es interno. La inseguridad sobre tu valor en el mercado actual está limitando lo que comunicas y lo que persigues.",
+    I: "La distancia con la IA es hoy tu mayor riesgo. Cada mes sin integrarla amplia la brecha con quienes sí lo hacen.",
+    N: "Tu red está dormida. Sin visibilidad activa en LinkedIn, oportunidades que deberían llegar a ti van a otros.",
+    T: "Identificas el rezago pero no has activado un plan. Sin dirección concreta, la transformación no ocurre sola.",
+    A: "El miedo al cambio o la rigidez ante lo nuevo está frenando tu evolución. Es la brecha más costosa de ignorar."
+  };
+ 
+  // Impacto de la brecha en términos concretos
+  var impactoTextos = {
+    M: "Impacto directo en salario y negociación: quienes proyectan seguridad acceden a mejores posiciones.",
+    I: "Impacto en competitividad inmediata: los perfiles que no usan IA ya están siendo descartados en procesos de selección.",
+    N: "Impacto en acceso a oportunidades: el 70% de las posiciones ejecutivas se cubren sin publicarse.",
+    T: "Impacto en relevancia a 12 meses: el mercado penaliza a quienes no evolucionan aunque tengan experiencia.",
+    A: "Impacto en empleabilidad general: la rigidez es el principal predictor de obsolescencia profesional."
+  };
+ 
+  var perfil = {};
+ 
+  if (total >= 10) {
+    // Rango: 10–13
+    perfil.nombre      = "Pionero";
+    perfil.nivel       = "PERFIL COMPETITIVO";
+    perfil.colorFondo  = "#0B1F3B";
+    perfil.colorNivel  = "#22c55e"; // verde
+    perfil.colorNivelBg = "#dcfce7";
+    perfil.desc        = "Estás por delante de la mayoría. Tu experiencia combinada con tu apertura a la IA te posiciona muy bien. El reto ahora es acelerar, visibilizarte y convertir tu ventaja en resultados concretos.";
+    perfil.msgPersonal = "Estás en el grupo del 20% superior. Ahora el trabajo es que el mercado lo sepa.";
+  } else if (total >= 7) {
+    // Rango: 7–9
+    perfil.nombre      = "En Transición";
+    perfil.nivel       = "POTENCIAL ALTO";
+    perfil.colorFondo  = "#FF6B4A";
+    perfil.colorNivel  = "#f59e0b"; // amarillo
+    perfil.colorNivelBg = "#fef3c7";
+    perfil.desc        = "Estás en el momento más crítico y también el más valioso. Tienes la experiencia, pero algunas brechas frenan tu potencial. Este es el momento exacto para actuar con un plan claro.";
+    perfil.msgPersonal = "Estás a 2 o 3 movimientos de un cambio real. El timing importa.";
+  } else {
+    // Rango: 5–6
+    perfil.nombre      = "En Riesgo";
+    perfil.nivel       = "RIESGO DE OBSOLESCENCIA";
+    perfil.colorFondo  = "#c0392b";
+    perfil.colorNivel  = "#ef4444"; // rojo
+    perfil.colorNivelBg = "#fee2e2";
+    perfil.desc        = "La velocidad del cambio te está afectando. No es tarde, pero sí urgente. Con el enfoque correcto puedes reposicionarte en menos tiempo del que crees.";
+    perfil.msgPersonal = "No es tarde. Pero el momento de actuar es ahora, no en 6 meses.";
+  }
+ 
+  perfil.ventajaDim    = ventajaNombre;
+  perfil.ventajaTexto  = ventajaTextos[maxDim];
+  perfil.brechaDim     = brechaNombre;
+  perfil.brechaTexto   = brechaTextos[minDim];
+  perfil.impactoTexto  = impactoTextos[minDim];
+  perfil.dimMax        = maxDim;
+  perfil.dimMin        = minDim;
+ 
+  return perfil;
+}
+ 
+// ============================================================
+// RECOMENDACIONES — sin cambios en los textos base
+// ============================================================
+function generarRecomendaciones(puntos) {
+  var recMap = {
+    M: { titulo: "Mindset", texto: "Documenta tus logros de los últimos 5 años: resultados concretos, equipos liderados, problemas resueltos. Eso reconstruye la certeza desde adentro y fortalece tu posicionamiento profesional." },
+    I: { titulo: "Inteligencia Artificial", texto: "Empieza con una sola herramienta de IA durante 30 días: ChatGPT o Copilot. Úsala para algo de tu trabajo diario. No necesitas ser experto — necesitas dejar de ser extraño a ella." },
+    N: { titulo: "Networking", texto: "Actualiza tu perfil de LinkedIn esta semana. Una foto profesional, un titular claro y tus últimos 3 logros es todo lo que necesitas para empezar a ser visible ante las oportunidades correctas." },
+    T: { titulo: "Transformación", texto: "Identifica una habilidad nueva que puedas desarrollar en los próximos 90 días. No un MBA — algo concreto y aplicable. La transformación se construye en sprints cortos, no en grandes saltos." },
+    A: { titulo: "Adaptabilidad", texto: "Define un experimento pequeño: algo nuevo que puedas probar esta semana sin comprometer nada. La adaptabilidad se entrena con acción, no con reflexión." }
+  };
+ 
+  var dims = Object.keys(puntos).sort(function(a, b) { return puntos[a] - puntos[b]; });
+  return [recMap[dims[0]], recMap[dims[1]]];
+}
+ 
+// ============================================================
+// COLOR DE BARRA — coral para brecha, azul para ventaja, gris medio para resto
+// ============================================================
+function colorBarra(dim, valor, dimMin, dimMax) {
+  if (dim === dimMin) return "#FF6B4A"; // brecha principal → coral
+  if (dim === dimMax) return "#0B1F3B"; // ventaja principal → azul
+  return "#1a3a6b"; // resto → azul medio
+}
+ 
+// ============================================================
+// CONSTRUCCIÓN DEL EMAIL
+// ============================================================
+function construirEmail(nombre, puntos, total, perfilData, recs) {
+  var h = "";
+ 
+  h += "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"></head>";
+  h += "<body style=\"margin:0;padding:0;background:#f7f7fb;font-family:Arial,sans-serif;\">";
+  h += "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f7f7fb;padding:30px 0;\"><tr><td align=\"center\">";
+  h += "<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(11,31,59,0.10);\">";
+ 
+  // HEADER
+  h += "<tr><td style=\"background:#0B1F3B;padding:32px 40px 24px;\">";
+  h += "<table width=\"100%\"><tr>";
+  h += "<td><div style=\"color:#ffffff;font-size:26px;font-weight:900;letter-spacing:2px;\">AVILÉS</div>";
+  h += "<div style=\"color:#aaaacc;font-size:9px;letter-spacing:3px;\">CONSTRUYENDO EL FUTURO DEL TALENTO</div></td>";
+  h += "<td align=\"right\"><div style=\"background:#FF6B4A;color:#ffffff;font-size:9px;font-weight:700;padding:6px 14px;border-radius:20px;\">TALENT CHECK ASFT</div></td>";
+  h += "</tr></table></td></tr>";
+ 
+  // FRANJA CORAL
+  h += "<tr><td style=\"background:#FF6B4A;height:4px;\"></td></tr>";
+ 
+  // SALUDO
+  h += "<tr><td style=\"padding:36px 40px 24px;\">";
+  h += "<div style=\"color:#0B1F3B;font-size:28px;font-weight:900;\">Hola, " + nombre + ".</div>";
+  h += "<div style=\"color:#6b6b8a;font-size:14px;margin-top:6px;\">Tu diagnóstico personalizado está listo.</div>";
+  h += "<div style=\"color:#6b6b8a;font-size:13px;margin-top:4px;\">" + perfilData.msgPersonal + "</div>";
+  h += "</td></tr>";
+ 
+  // SCORE + NIVEL INTERPRETATIVO + PERFIL
+  h += "<tr><td style=\"padding:0 40px 24px;\"><table width=\"100%\"><tr>";
+ 
+  // Score con nivel
+  h += "<td width=\"48%\" style=\"background:#f7f7fb;border-radius:12px;padding:20px;text-align:center;\">";
+  h += "<div style=\"color:#0B1F3B;font-size:42px;font-weight:900;line-height:1;\">" + total + "<span style=\"font-size:18px;color:#6b6b8a;\">/13</span></div>";
+  h += "<div style=\"color:#6b6b8a;font-size:9px;letter-spacing:2px;margin-top:6px;\">PUNTAJE TOTAL MINTA</div>";
+  // Nivel interpretativo como badge
+  h += "<div style=\"display:inline-block;margin-top:10px;background:" + perfilData.colorNivelBg + ";color:" + perfilData.colorNivel + ";font-size:9px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:1px;\">" + perfilData.nivel + "</div>";
+  h += "</td>";
+ 
+  h += "<td width=\"4%\"></td>";
+ 
+  // Perfil
+  h += "<td width=\"48%\" style=\"background:" + perfilData.colorFondo + ";border-radius:12px;padding:20px;text-align:center;\">";
+  h += "<div style=\"color:#ffffff;font-size:11px;font-weight:700;letter-spacing:1px;\">TU PERFIL</div>";
+  h += "<div style=\"color:#ffffff;font-size:22px;font-weight:900;margin-top:4px;\">" + perfilData.nombre.toUpperCase() + "</div>";
+  h += "</td>";
+  h += "</tr></table></td></tr>";
+ 
+  // QUÉ SIGNIFICA TU SCORE
+  h += "<tr><td style=\"padding:0 40px 8px;\">";
+  h += "<div style=\"color:#1a1a2e;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;\">Lo que significa tu resultado</div>";
+  h += "<div style=\"background:#f7f7fb;border-radius:12px;padding:20px;border-left:4px solid " + perfilData.colorFondo + ";\">";
+  h += "<div style=\"color:#6b6b8a;font-size:13px;line-height:1.6;\">" + perfilData.desc + "</div>";
+  h += "</div></td></tr>";
+ 
+  // VENTAJA PRINCIPAL + BRECHA PRINCIPAL — NUEVO BLOQUE
+  h += "<tr><td style=\"padding:16px 40px 8px;\">";
+  h += "<div style=\"color:#1a1a2e;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;\">Tu mapa de oportunidad</div>";
+  h += "<table width=\"100%\"><tr>";
+ 
+  // Ventaja
+  h += "<td width=\"48%\" style=\"background:#eef9f1;border-radius:12px;padding:18px;vertical-align:top;\">";
+  h += "<div style=\"color:#085041;font-size:9px;font-weight:700;letter-spacing:1px;\">✓ TU MAYOR VENTAJA</div>";
+  h += "<div style=\"color:#085041;font-size:13px;font-weight:700;margin-top:6px;\">" + perfilData.ventajaDim + "</div>";
+  h += "<div style=\"color:#6b6b8a;font-size:12px;line-height:1.5;margin-top:8px;\">" + perfilData.ventajaTexto + "</div>";
+  h += "</td>";
+ 
+  h += "<td width=\"4%\"></td>";
+ 
+  // Brecha
+  h += "<td width=\"48%\" style=\"background:#fff5f3;border-radius:12px;padding:18px;vertical-align:top;border-left:3px solid #FF6B4A;\">";
+  h += "<div style=\"color:#c0392b;font-size:9px;font-weight:700;letter-spacing:1px;\">⚡ TU MAYOR BRECHA</div>";
+  h += "<div style=\"color:#c0392b;font-size:13px;font-weight:700;margin-top:6px;\">" + perfilData.brechaDim + "</div>";
+  h += "<div style=\"color:#6b6b8a;font-size:12px;line-height:1.5;margin-top:8px;\">" + perfilData.brechaTexto + "</div>";
+  h += "<div style=\"color:#c0392b;font-size:11px;font-weight:700;margin-top:10px;border-top:1px solid #fecaca;padding-top:8px;\">" + perfilData.impactoTexto + "</div>";
+  h += "</td>";
+ 
+  h += "</tr></table></td></tr>";
+ 
+  // BARRAS MINTA — brecha en coral, ventaja en azul oscuro
+  h += "<tr><td style=\"padding:16px 40px 8px;\">";
+  h += "<div style=\"color:#1a1a2e;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;\">Tu puntuación MINTA</div>";
+  h += "<table width=\"100%\"><tr>";
+ 
+  var dims2   = ["M","I","N","T","A"];
+  var labels2 = { M:"Mindset", I:"IA", N:"Networking", T:"Transform.", A:"Adaptab." };
+  var maxPct2 = { M:3, I:3, N:3, T:2, A:2 };
+ 
+  for (var i = 0; i < dims2.length; i++) {
+    var d   = dims2[i];
+    var v   = puntos[d];
+    var pct = Math.round((v / maxPct2[d]) * 100);
+    var col = colorBarra(d, v, perfilData.dimMin, perfilData.dimMax);
+    var isBrecha  = (d === perfilData.dimMin);
+    var isVentaja = (d === perfilData.dimMax);
+ 
+    h += "<td style=\"padding:0 4px;text-align:center;\">";
+    h += "<div style=\"color:" + (isBrecha ? "#FF6B4A" : isVentaja ? "#0B1F3B" : "#6b6b8a") + ";font-size:11px;font-weight:700;\">" + d + "</div>";
+    h += "<div style=\"color:#6b6b8a;font-size:9px;\">" + labels2[d] + "</div>";
+    h += "<div style=\"background:#e8e8f0;border-radius:6px;height:10px;margin-top:4px;\">";
+    h += "<div style=\"background:" + col + ";width:" + pct + "%;height:10px;border-radius:6px;\"></div></div>";
+    h += "<div style=\"color:" + (isBrecha ? "#FF6B4A" : "#1a1a2e") + ";font-size:11px;font-weight:700;margin-top:4px;\">" + v + "/" + maxPct2[d] + "</div>";
+    if (isBrecha)  h += "<div style=\"color:#FF6B4A;font-size:8px;font-weight:700;\">⚡ BRECHA</div>";
+    if (isVentaja) h += "<div style=\"color:#0B1F3B;font-size:8px;font-weight:700;\">✓ VENTAJA</div>";
+    h += "</td>";
+  }
+  h += "</tr></table></td></tr>";
+ 
+  // RECOMENDACIONES
+  h += "<tr><td style=\"padding:16px 40px 8px;\">";
+  h += "<div style=\"color:#1a1a2e;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;\">Tus 2 prioridades de acción</div>";
+  h += "<div style=\"background:#f7f7fb;border-radius:12px;padding:20px;margin-bottom:12px;border-left:4px solid #FF6B4A;\">";
+  h += "<div style=\"color:#1a1a2e;font-size:13px;font-weight:700;margin-bottom:8px;\">1. " + recs[0].titulo + "</div>";
+  h += "<div style=\"color:#6b6b8a;font-size:13px;line-height:1.6;\">" + recs[0].texto + "</div></div>";
+  h += "<div style=\"background:#f7f7fb;border-radius:12px;padding:20px;border-left:4px solid #0B1F3B;\">";
+  h += "<div style=\"color:#1a1a2e;font-size:13px;font-weight:700;margin-bottom:8px;\">2. " + recs[1].titulo + "</div>";
+  h += "<div style=\"color:#6b6b8a;font-size:13px;line-height:1.6;\">" + recs[1].texto + "</div></div>";
+  h += "</td></tr>";
+ 
+ 
+ 
+  // CTA — NUEVO: sesión estratégica, no WhatsApp
+  h += "<tr><td style=\"padding:16px 40px 36px;\">";
+  h += "<div style=\"background:#0B1F3B;border-radius:12px;padding:28px;text-align:center;\">";
+  h += "<div style=\"color:#ffffff;font-size:16px;font-weight:900;margin-bottom:6px;\">Agenda tu sesión estratégica gratuita</div>";
+  h += "<div style=\"color:#aaaacc;font-size:12px;line-height:1.6;margin-bottom:6px;\">30 minutos con Fernando Avilés</div>";
+  h += "<table width=\"100%\"><tr>";
+  h += "<td style=\"text-align:center;padding:4px 8px;\"><div style=\"color:#FF6B4A;font-size:11px;font-weight:700;\">✓ Lectura profunda</div><div style=\"color:#aaaacc;font-size:10px;\">de tu resultado MINTA</div></td>";
+  h += "<td style=\"text-align:center;padding:4px 8px;\"><div style=\"color:#FF6B4A;font-size:11px;font-weight:700;\">✓ Brechas priorizadas</div><div style=\"color:#aaaacc;font-size:10px;\">con impacto real</div></td>";
+  h += "<td style=\"text-align:center;padding:4px 8px;\"><div style=\"color:#FF6B4A;font-size:11px;font-weight:700;\">✓ Próximos pasos</div><div style=\"color:#aaaacc;font-size:10px;\">concretos para ti</div></td>";
+  h += "</tr></table>";
+  h += "<div style=\"margin-top:20px;\">";
+  h += "<a href=\"https://cal.com/aviles\" style=\"background:#FF6B4A;color:#ffffff;font-size:13px;font-weight:700;padding:14px 32px;border-radius:25px;text-decoration:none;display:inline-block;\">AGENDAR MI SESIÓN GRATUITA</a>";
+  h += "</div>";
+  h += "<div style=\"color:#aaaacc;font-size:10px;margin-top:12px;\">talent-check-asft.netlify.app · @aviles.talent</div>";
+  h += "</div></td></tr>";
+ 
+  // FOOTER
+  h += "<tr><td style=\"background:#0B1F3B;padding:20px 40px;text-align:center;\">";
+  h += "<div style=\"color:#ffffff;font-size:13px;font-weight:700;\">Avilés | Construyendo el Futuro del Talento</div>";
+  h += "<div style=\"color:#aaaacc;font-size:11px;margin-top:4px;\">talent-check-asft.netlify.app · fer@avilesfutureoftalent.com</div>";
+  h += "</td></tr>";
+ 
+  h += "</table></td></tr></table></body></html>";
+ 
+  return h;
+}
